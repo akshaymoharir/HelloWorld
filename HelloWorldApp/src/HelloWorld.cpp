@@ -5,7 +5,8 @@
 int main(int argc, char** argv)
 {
     // Print Hello World
-    std::cout << "Hello World.." << std::endl;
+    std::cout << "\n" << std::endl;
+    std::cout << "Hello World .." << std::endl;
     
     // Organize and print input arguments
     std::cout << "This program has " << argc << " arguments." << std::endl;
