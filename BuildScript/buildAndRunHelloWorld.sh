@@ -13,9 +13,12 @@ desiredPath="${currentDir}/.."
 echo "${desiredPath}"
 cd ${desiredPath}
 
-cd HelloWorldApp
+cd HelloWorldApp/macOSBuild
 make clean
-cd ..
+cmake ..
+make
+./myHelloWorldApp
+cd ../..
 
 # Build fresh docker image(--no-cache)
 docker build --no-cache -t helloworld .
@@ -23,14 +26,13 @@ docker build --no-cache -t helloworld .
 # Run docker image to see output
 docker run -it helloworld
 
+# Obtain container ID
 CONTAINER_ID=$(docker ps -alq)
-# If you do not know the exact file name, you'll need to run "ls"
-# FILE=$(docker exec CONTAINER_ID sh -c "ls /path/*.zip")
 
-#docker cp $CONTAINER_ID:/RepoRootFolder/HelloWorldApp/buildDocker ../HelloWorldApp/dockerContainerBuild/
-
+# Copy built binaries to host
 docker cp $CONTAINER_ID:/RepoRootFolder/HelloWorldApp/buildDocker ../HelloWorld/HelloWorldApp/dockerContainerBuild/
 
+# Stop docker container
 docker stop $CONTAINER_ID
 
 
