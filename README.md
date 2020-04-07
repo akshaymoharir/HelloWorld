@@ -11,7 +11,7 @@ Script `buildAndRunHelloWorld.sh` has following implementation:
 - build docker image with `--no-cache` mode 
 - run a docker container from image built in above step 
 - build code and execute it within the same environment
-- And copy built binaries back to host computer
+- And copy built binaries back to the host computer
 
 
 ## How to build
